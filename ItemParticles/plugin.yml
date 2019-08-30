@@ -1,0 +1,9 @@
+name: ItemParticles
+author: Shelk
+version: 1.0
+main: org.shelk.ItemParticles
+api-version: 1.13
+soft-depend: [ParticleAPI]
+commands:
+  itemparticles:
+    description: Open the menu of ItemParticles
