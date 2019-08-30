@@ -27,7 +27,6 @@ public class ItemParticlesHandler implements CommandExecutor {
 			
 			
 			Player p = (Player) sender;
-			
 			if (!p.hasPermission("itemparticles.modify")) {
 				p.sendMessage("§cYou don't have the permission to do this command.");
 				return false;

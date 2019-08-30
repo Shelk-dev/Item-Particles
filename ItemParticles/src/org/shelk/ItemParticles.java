@@ -3,6 +3,7 @@ package org.shelk;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -99,8 +100,12 @@ public class ItemParticles extends JavaPlugin {
 
 			if (pe.getItem() == null || (gethand == null && otherhand == null)) continue;
 			if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
-			if (pe.getName() == null || gethand.hasItemMeta() && gethand.getItemMeta().getDisplayName().equals(pe.getName()) || otherhand.hasItemMeta() && otherhand.getItemMeta().getDisplayName().equals(pe.getName())) {
-			if (pe.getLore() == null || gethand.hasItemMeta() && gethand.getItemMeta().getLore().equals(pe.getLore()) || otherhand.hasItemMeta() && otherhand.getItemMeta().getLore().equals(pe.getLore())) {
+				String name = gethand.getItemMeta().getDisplayName();
+				String othername = otherhand.getItemMeta().getDisplayName();
+				List<String> lore = gethand.getItemMeta().getLore();
+				List<String> otherlore = otherhand.getItemMeta().getLore();
+			if (pe.getName() == null || gethand.hasItemMeta() && name != null && name.equals(pe.getName()) || otherhand.hasItemMeta() && othername != null && othername.equals(pe.getName())) {
+			if (pe.getLore() == null || gethand.hasItemMeta() && lore != null && lore.equals(pe.getLore()) || otherhand.hasItemMeta() && otherlore != null && otherlore.equals(pe.getLore())) {
 			// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
 		    if (pe.getParticle() == null) continue;
 		    if (pe.getShape() == null) continue;
