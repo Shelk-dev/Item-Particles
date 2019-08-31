@@ -1,6 +1,6 @@
 name: ItemParticles
 author: Shelk
-version: 1.0
+version: v1.4
 main: org.shelk.ItemParticles
 api-version: 1.13
 soft-depend: [ParticleAPI]
