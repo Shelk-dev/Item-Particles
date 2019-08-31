@@ -16,7 +16,6 @@ import org.shelk.ParticleEffect;
 import org.shelk.commandhandler.ItemParticlesHandler;
 import org.shelk.utils.XMaterial;
 import org.shelk.utils.XParticle;
-
 public class InventoryClickListener implements Listener {
 
 	private HashMap<Player, ParticleEffect> currentparticleeffectgui = new HashMap<>();
@@ -123,6 +122,7 @@ public class InventoryClickListener implements Listener {
 					newinv.setItem(4, ItemParticlesHandler.getItemStack("§7Disk", null, XMaterial.COMPASS.parseMaterial()));
 					newinv.setItem(5, ItemParticlesHandler.getItemStack("§aAura", null, XMaterial.LEAD.parseMaterial()));
 					newinv.setItem(6, ItemParticlesHandler.getItemStack("§bStar", null, XMaterial.NETHER_STAR.parseMaterial()));
+					newinv.setItem(6, ItemParticlesHandler.getItemStack("§2Wings", null, XMaterial.FEATHER.parseMaterial()));
 					
 					p.openInventory(newinv);
 					
@@ -185,8 +185,30 @@ public class InventoryClickListener implements Listener {
 				if (e.getCurrentItem().getType() == XMaterial.COMPASS.parseMaterial()) {choix="disk";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.LEAD.parseMaterial()) {choix="aura";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.NETHER_STAR.parseMaterial()) {choix="star";getparticle.setShape(choix);}
+				if (e.getCurrentItem().getType() == XMaterial.FEATHER.parseMaterial()) {
+					p.closeInventory();
+					e.setCancelled(true);
+					Inventory wingschoose = Bukkit.createInventory(null, 9, "§cChoose wings");
+					wingschoose.setItem(0, ItemParticlesHandler.getItemStack("§cType 1", null, XMaterial.FEATHER.parseMaterial()));
+					wingschoose.setItem(1, ItemParticlesHandler.getItemStack("§cType 2", null, XMaterial.FEATHER.parseMaterial()));
+					p.openInventory(wingschoose);
+					return;
+				}
 				p.sendMessage("§cThe shape has been set to §b" + choix);
 				
+				
+			}
+		}
+		
+		if (e.getView().getTitle().equals("§cChoose wings")) {
+			if (e.getCurrentItem() != null && e.getCurrentItem().getType() != XMaterial.AIR.parseMaterial()) {
+				ParticleEffect getparticle = currentparticleeffectgui.get(p);
+				e.setCancelled(true);
+				String choix = null;
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "wings1"; getparticle.setShape("wings1");;};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "wings2"; getparticle.setShape("wings2");;};
+				p.sendMessage("§cYou chose the type" + choix + " for your wings !");
+				return;
 				
 			}
 		}
