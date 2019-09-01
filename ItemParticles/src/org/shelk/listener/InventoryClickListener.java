@@ -191,6 +191,7 @@ public class InventoryClickListener implements Listener {
 					Inventory wingschoose = Bukkit.createInventory(null, 9, "§cChoose wings");
 					wingschoose.setItem(0, ItemParticlesHandler.getItemStack("§cType 1", null, XMaterial.FEATHER.parseMaterial()));
 					wingschoose.setItem(1, ItemParticlesHandler.getItemStack("§cType 2", null, XMaterial.FEATHER.parseMaterial()));
+					wingschoose.setItem(2, ItemParticlesHandler.getItemStack("§cType 3", null, XMaterial.FEATHER.parseMaterial()));
 					p.openInventory(wingschoose);
 					return;
 				}
@@ -207,6 +208,7 @@ public class InventoryClickListener implements Listener {
 				String choix = null;
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "wings1"; getparticle.setShape("wings1");;};
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "wings2"; getparticle.setShape("wings2");;};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 3")) {choix = "wings3"; getparticle.setShape("wings3");;};
 				p.sendMessage("§cYou chose the type" + choix + " for your wings !");
 				return;
 				

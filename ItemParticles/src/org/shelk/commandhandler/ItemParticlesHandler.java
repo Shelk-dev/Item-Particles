@@ -182,6 +182,7 @@ public class ItemParticlesHandler implements CommandExecutor {
 			numberinthelist++;			}
 			
 		p.openInventory(inv);
+		p.updateInventory();
 		}
 		
 		

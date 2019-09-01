@@ -15,6 +15,9 @@ public class WingsRunnable extends BukkitRunnable {
 	static boolean o = false;
 	
 	private static boolean[][] shape1 = {
+			// 24 ->
+			// 18 |
+			//    v
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
@@ -55,6 +58,26 @@ public class WingsRunnable extends BukkitRunnable {
             {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
             {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
 	};
+	private static boolean[][] shape3 = {
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, x, x, x, o, o, o, o, x, x, x, o, o, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, x, x, o, o, o, o, x, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, x, x, x, o, o, x, x, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, o, o, o, o, o, o, o, o, x, x, x, x, x, o, o, o},
+            {o, o, o, x, x, x, x, x, o, o, o, o, o, o, o, o, x, x, x, x, x, o, o, o},
+            {o, o, o, x, x, x, x, o, o, o, o, o, o, o, o, o, o, x, x, x, x, o, o, o},
+            {o, o, x, x, x, x, x, o, o, o, o, o, o, o, o, o, o, x, x, x, x, x, o, o},
+            {o, o, o, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, x, o, o, o},
+    	};
 	
 	
 
@@ -74,6 +97,9 @@ public class WingsRunnable extends BukkitRunnable {
 					    	}
 					    	if (pe.getShape().equals("wings2")) {
 					    		drawParticles(p.getLocation(), pe, p, shape2);
+					    	}
+					    	if (pe.getShape().equals("wings3")) {
+					    		drawParticles(p.getLocation(), pe, p, shape3);
 					    	}
 
 					    
@@ -98,7 +124,7 @@ public class WingsRunnable extends BukkitRunnable {
 		        // + 2.8
 		        double y = location.clone().getY() + 3.2;
 		        // + 0.5
-		        double z = location.clone().getZ() - 0.2;
+		        double z = location.clone().getZ();
 		        double fire = -((location.getYaw() + 180) / 60);
 		        
 		        fire += (location.getYaw() < -180 ? 3.25 : 2.985);
