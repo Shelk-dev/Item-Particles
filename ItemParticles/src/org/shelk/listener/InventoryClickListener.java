@@ -20,7 +20,7 @@ public class InventoryClickListener implements Listener {
 
 	private HashMap<Player, ParticleEffect> currentparticleeffectgui = new HashMap<>();
 	
-	@EventHandler
+	@EventHandler 
 	public void onInteract(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
 		

@@ -17,7 +17,7 @@ public class WingsRunnable extends BukkitRunnable {
 	private static boolean[][] shape1 = {
 			// 24 ->
 			// 18 |
-			//    v
+			//    v 
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
 			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
