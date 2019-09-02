@@ -71,7 +71,7 @@ public class ItemParticlesHandler implements CommandExecutor {
 						if (getitem.hasItemMeta() && getitem.getItemMeta().getLore() != null) lore = getitem.getItemMeta().getLore();
 					
 						
-						ParticleEffect pe = new ParticleEffect(name,lore,type, args[0], null, null, 0, null, null);
+						ParticleEffect pe = new ParticleEffect(name,lore,type, args[0], null, null, 0, null, null, null);
 						ItemParticles.listparticleeffect.add(pe);
 						p.sendMessage("§aYou created a new item particle !");
 						openPrincipalGui(p, 1);
@@ -93,6 +93,20 @@ public class ItemParticlesHandler implements CommandExecutor {
 									
 									pe.setAmount(Integer.parseInt(args[2]));
 									p.sendMessage("§cThe amount of particles has been set on §b" + args[2] + ".");
+									
+									
+									return false;
+								}
+							}
+							p.sendMessage("§cNo item particle found with this id !");
+							
+						} else if (args[0].equals("modifypermission")){
+							
+							for(ParticleEffect pe : ItemParticles.listparticleeffect) {
+								if (pe.getId().equals(args[1])) {
+
+									pe.setPermission(args[2]);
+									p.sendMessage("§cThe permission of the effect §d" + pe.getId() + " §chas been set on §b" + args[2] + ".");
 									
 									
 									return false;

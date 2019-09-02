@@ -54,6 +54,7 @@ public class InventoryClickListener implements Listener {
 				gui.setItem(2, ItemParticlesHandler.getItemStack("§dParticle", null, XMaterial.EMERALD.parseMaterial()));
 				gui.setItem(3, ItemParticlesHandler.getItemStack("§eAmount of particles", null, XMaterial.ARROW.parseMaterial()));
 				gui.setItem(4, ItemParticlesHandler.getItemStack("§aOn which hands does it work ?", null, XMaterial.GOLDEN_AXE.parseMaterial()));
+				gui.setItem(5, ItemParticlesHandler.getItemStack("§bPermission", null, XMaterial.NAME_TAG.parseMaterial()));
 				gui.setItem(8, ItemParticlesHandler.getItemStack("§4Delete the item particle", null, XMaterial.REDSTONE_BLOCK.parseMaterial()));
 				p.openInventory(gui);
 				
@@ -96,6 +97,11 @@ public class InventoryClickListener implements Listener {
 					p.closeInventory();
 				}
 				
+				if (e.getCurrentItem().getType() == XMaterial.NAME_TAG.parseMaterial()){
+					p.sendMessage("§aUse the command /itemparticles modifypermission " + currentparticleeffectgui.get(p).getId() + " <permission>");
+					p.closeInventory();
+				}
+				
 				if (e.getCurrentItem().getType() == XMaterial.GOLDEN_AXE.parseMaterial()) {
 					if (Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.7")) {
 						p.sendMessage("§cThis option is not available in 1.7/1.8.");
@@ -122,7 +128,7 @@ public class InventoryClickListener implements Listener {
 					newinv.setItem(4, ItemParticlesHandler.getItemStack("§7Disk", null, XMaterial.COMPASS.parseMaterial()));
 					newinv.setItem(5, ItemParticlesHandler.getItemStack("§aAura", null, XMaterial.LEAD.parseMaterial()));
 					newinv.setItem(6, ItemParticlesHandler.getItemStack("§bStar", null, XMaterial.NETHER_STAR.parseMaterial()));
-					newinv.setItem(6, ItemParticlesHandler.getItemStack("§2Wings", null, XMaterial.FEATHER.parseMaterial()));
+					newinv.setItem(7, ItemParticlesHandler.getItemStack("§2Wings", null, XMaterial.FEATHER.parseMaterial()));
 					
 					p.openInventory(newinv);
 					

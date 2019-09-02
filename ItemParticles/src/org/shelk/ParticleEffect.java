@@ -21,8 +21,9 @@ public class ParticleEffect implements ConfigurationSerializable {
 	private int amount;
 	private String hands = null;
 	private Color color = null;
+	private String permission = null;
 	
-	public ParticleEffect(String name, List<String> lore, Material type, String id, String shape, XParticle pa, Integer amount, String hands, Color color) {
+	public ParticleEffect(String name, List<String> lore, Material type, String id, String shape, XParticle pa, Integer amount, String hands, Color color, String permission) {
 		this.name = name;
 		this.lore = lore;
 		this.type = type;
@@ -32,6 +33,7 @@ public class ParticleEffect implements ConfigurationSerializable {
 		this.amount = amount;
 		this.hands = hands;
 		this.color = color;
+		this.permission = permission;
 	}
 
 	public String getName() {
@@ -104,6 +106,7 @@ public class ParticleEffect implements ConfigurationSerializable {
         map.put("amount", this.amount);
         map.put("hands", this.hands);
         map.put("color", this.color);
+        map.put("permission", this.permission);
         
         
         
@@ -127,8 +130,18 @@ public class ParticleEffect implements ConfigurationSerializable {
 		int amount = (int) args.get("amount");
 		String hands = (String) args.get("hands");
 		Color color = (Color) args.get("color");
-		return new ParticleEffect(name,lore,type,id,shape,pa,amount,hands,color);
+		String permission = null;
+		if ((String) args.get("permission") != null) permission = (String) args.get("permission");
+		return new ParticleEffect(name,lore,type,id,shape,pa,amount,hands,color, permission);
     }
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
 
 	
 }

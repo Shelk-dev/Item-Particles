@@ -92,32 +92,34 @@ public class ItemParticles extends JavaPlugin {
 	
 	public static ArrayList<ParticleEffect> getParticleEffectItem(Player p) {
 		
-		if (p.hasPermission("itemparticles.display")) {
+		if (!p.hasPermission("itemparticles.display")) {
 		ArrayList<ParticleEffect> al = new ArrayList<>();
 		if (listparticleeffect != null && listparticleeffect.size() > 0) {
 			for(ParticleEffect pe : ItemParticles.listparticleeffect) {
 				if (pe != null) {
+					if (pe.getPermission() == null || p.hasPermission(pe.getPermission())) {
 					
-			ItemStack gethand = getHands(1, pe, p);
-			ItemStack otherhand = getHands(2, pe, p);
+							ItemStack gethand = getHands(1, pe, p);
+							ItemStack otherhand = getHands(2, pe, p);
 
-			if (pe.getItem() == null || (gethand == null && otherhand == null)) continue;
-			if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
-				String name = gethand.getItemMeta().getDisplayName();
-				String othername = otherhand.getItemMeta().getDisplayName();
-				List<String> lore = gethand.getItemMeta().getLore();
-				List<String> otherlore = otherhand.getItemMeta().getLore();
-			if (pe.getName() == null || gethand.hasItemMeta() && name != null && name.equals(pe.getName()) || otherhand.hasItemMeta() && othername != null && othername.equals(pe.getName())) {
-			if (pe.getLore() == null || gethand.hasItemMeta() && lore != null && lore.equals(pe.getLore()) || otherhand.hasItemMeta() && otherlore != null && otherlore.equals(pe.getLore())) {
-			// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
-		    if (pe.getParticle() == null) continue;
-		    if (pe.getShape() == null) continue;
-		    al.add(pe);
-			}
-			}
-		}
+							if (pe.getItem() == null || (gethand == null && otherhand == null)) continue;
+							if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
+								String name = gethand.getItemMeta().getDisplayName();
+								String othername = otherhand.getItemMeta().getDisplayName();
+								List<String> lore = gethand.getItemMeta().getLore();
+								List<String> otherlore = otherhand.getItemMeta().getLore();
+								if (pe.getName() == null || gethand.hasItemMeta() && name != null && name.equals(pe.getName()) || otherhand.hasItemMeta() && othername != null && othername.equals(pe.getName())) {
+									if (pe.getLore() == null || gethand.hasItemMeta() && lore != null && lore.equals(pe.getLore()) || otherhand.hasItemMeta() && otherlore != null && otherlore.equals(pe.getLore())) {
+										// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
+										if (pe.getParticle() == null) continue;
+										if (pe.getShape() == null) continue;
+										al.add(pe);
+									}
+								}
+							}
 			
-			}
+					}
+				}
 			}
 		}
 		if (al != null && al.size() > 0) return al;
