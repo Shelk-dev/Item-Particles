@@ -92,7 +92,7 @@ public class ItemParticles extends JavaPlugin {
 	
 	public static ArrayList<ParticleEffect> getParticleEffectItem(Player p) {
 		
-		if (!p.hasPermission("itemparticles.display")) {
+		if (p.hasPermission("itemparticles.display")) {
 		ArrayList<ParticleEffect> al = new ArrayList<>();
 		if (listparticleeffect != null && listparticleeffect.size() > 0) {
 			for(ParticleEffect pe : ItemParticles.listparticleeffect) {
