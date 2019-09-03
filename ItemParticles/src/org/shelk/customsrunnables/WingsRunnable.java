@@ -79,6 +79,27 @@ public class WingsRunnable extends BukkitRunnable {
             {o, o, o, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, x, o, o, o},
     	};
 	
+	private static boolean[][] shape4 = {
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, x, x, o, o, o, o, x, x, x, x, x, o, o, o, o, o},
+            {o, o, o, x, x, x, x, o, o, o, o, o, o, o, o, o, o, x, x, x, x, o, o, o},
+            {o, o, x, x, x, x, x, o, o, o, o, o, o, o, o, o, o, x, x, x, x, x, o, o},
+            {o, x, x, x, x, x, x, x, o, o, o, o, o, o, o, o, x, x, x, x, x, x, x, o},
+            {o, x, x, x, x, x, x, x, x, x, o, o, o, o, x, x, x, x, x, x, x, x, o, o},
+            {x, x, x, x, x, x, x, x, x, x, x, o, o, x, x, x, x, x, o, x, x, x, x, x},
+            {x, o, x, o, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, o, x, o, x},
+            {x, x, x, o, x, x, x, x, x, x, x, o, o, x, x, x, o, x, x, x, o, x, x, x},
+            {x, x, o, x, o, x, o, x, o, o, o, o, o, o, o, x, x, o, x, o, x, o, x, x},
+            {x, x, o, x, o, x, x, o, o, o, o, o, o, o, o, o, o, x, x, o, x, o, x, x},
+            {x, x, o, x, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, x, x, o, x, x},
+            {o, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, x, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+    	};
+	
 	
 
 		public WingsRunnable() {
@@ -93,13 +114,16 @@ public class WingsRunnable extends BukkitRunnable {
 
 					    	// RGB SET 
 					    	if (pe.getShape().equals("wings1")) {
-					    		drawParticles(p.getLocation(), pe, p, shape1);
+					    		drawWings(p.getLocation(), pe, p, shape1);
 					    	}
 					    	if (pe.getShape().equals("wings2")) {
-					    		drawParticles(p.getLocation(), pe, p, shape2);
+					    		drawWings(p.getLocation(), pe, p, shape2);
 					    	}
 					    	if (pe.getShape().equals("wings3")) {
-					    		drawParticles(p.getLocation(), pe, p, shape3);
+					    		drawWings(p.getLocation(), pe, p, shape3);
+					    	}
+					    	if (pe.getShape().equals("wings4")) {
+					    		drawWings(p.getLocation(), pe, p, shape4);
 					    	}
 
 					    
@@ -111,7 +135,7 @@ public class WingsRunnable extends BukkitRunnable {
 
 		}
 		
-		 private void drawParticles(Location location, ParticleEffect pe, Player p, boolean[][] shape){
+		 private void drawWings(Location location, ParticleEffect pe, Player p, boolean[][] shape){
 			 
 			    float rgb1 = MathParticles.getRGB(1, pe);
 			    float rgb2 = MathParticles.getRGB(2, pe);
