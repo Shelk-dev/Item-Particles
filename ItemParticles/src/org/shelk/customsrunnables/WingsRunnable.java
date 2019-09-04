@@ -99,6 +99,27 @@ public class WingsRunnable extends BukkitRunnable {
             {o, x, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, x, o},
             {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
     	};
+
+	private static boolean[][] shape5 = {
+			{o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+			{o, o, o, x, x, x, x, o, o, o, o, o, o, o, o, o, o, x, x, x, x, o, o, o},
+			{o, o, x, x, x, x, x, x, o, o, o, o, o, o, o, o, x, x, x, x, x, x, o, o},
+            {o, o, x, x, x, x, x, x, x, o, o, o, o, o, o, x, x, x, x, x, x, x, o, o},
+            {o, o, x, x, x, o, x, x, x, o, o, o, o, o, o, x, x, x, o, x, x, x, o, o},
+            {o, o, x, x, o, x, o, x, x, x, o, o, o, o, x, x, x, o, x, o, x, x, o, o},
+            {o, o, x, x, x, o, x, o, x, x, o, o, o, o, x, x, o, x, o, x, x, x, o, o},
+            {o, o, x, x, x, x, o, x, o, x, x, o, o, x, x, o, x, o, x, x, x, x, o, o},
+            {o, o, o, x, x, x, x, o, x, x, x, o, o, x, x, x, o, x, x, x, x, o, o, o},
+            {o, o, o, x, x, x, x, o, x, x, x, x, x, x, x, x, o, x, x, x, x, o, o, o},
+            {o, o, o, o, x, x, x, o, o, x, x, x, x, x, x, o, o, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, o, x, x, o, o, x, x, o, o, x, x, o, o, o, x, o, o, o, o, o},
+            {o, o, o, o, o, o, x, x, x, o, o, o, o, o, o, x, x, x, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+    	};
 	
 	
 
@@ -124,6 +145,9 @@ public class WingsRunnable extends BukkitRunnable {
 					    	}
 					    	if (pe.getShape().equals("wings4")) {
 					    		drawWings(p.getLocation(), pe, p, shape4);
+					    	}
+					    	if (pe.getShape().equals("wings5")) {
+					    		drawWings(p.getLocation(), pe, p, shape5);
 					    	}
 
 					    

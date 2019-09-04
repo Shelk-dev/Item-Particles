@@ -199,6 +199,7 @@ public class InventoryClickListener implements Listener {
 					wingschoose.setItem(1, ItemParticlesHandler.getItemStack("§cType 2", null, XMaterial.FEATHER.parseMaterial()));
 					wingschoose.setItem(2, ItemParticlesHandler.getItemStack("§cType 3", null, XMaterial.FEATHER.parseMaterial()));
 					wingschoose.setItem(3, ItemParticlesHandler.getItemStack("§cType 4", null, XMaterial.FEATHER.parseMaterial()));
+					wingschoose.setItem(4, ItemParticlesHandler.getItemStack("§cType 5", null, XMaterial.FEATHER.parseMaterial()));
 					p.openInventory(wingschoose);
 					return;
 				}
@@ -213,11 +214,13 @@ public class InventoryClickListener implements Listener {
 				ParticleEffect getparticle = currentparticleeffectgui.get(p);
 				e.setCancelled(true);
 				String choix = null;
-				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "wings1"; getparticle.setShape("wings1");;};
-				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "wings2"; getparticle.setShape("wings2");;};
-				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 3")) {choix = "wings3"; getparticle.setShape("wings3");;};
-				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 4")) {choix = "wings4"; getparticle.setShape("wings4");;};
-				p.sendMessage("§cYou chose the type" + choix + " for your wings !");
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "wings1"; getparticle.setShape("wings1");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "wings2"; getparticle.setShape("wings2");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 3")) {choix = "wings3"; getparticle.setShape("wings3");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 4")) {choix = "wings4"; getparticle.setShape("wings4");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 5")) {choix = "wings5"; getparticle.setShape("wings5");};
+				p.sendMessage("§cYou chose the type " + choix + " for your wings !");
+				p.closeInventory();
 				return;
 				
 			}
