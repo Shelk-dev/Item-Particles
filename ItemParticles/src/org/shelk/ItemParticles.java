@@ -18,6 +18,7 @@ import org.shelk.customsrunnables.OtherParticlesRunnable;
 import org.shelk.customsrunnables.WingsRunnable;
 import org.shelk.listener.InventoryClickListener;
 import org.shelk.listener.ParticleMoveEvent;
+import org.shelk.utils.XMaterial;
 
 
 public class ItemParticles extends JavaPlugin {
@@ -101,19 +102,22 @@ public class ItemParticles extends JavaPlugin {
 							ItemStack gethand = getHands(1, pe, p);
 							ItemStack otherhand = getHands(2, pe, p);
 							
-							if (pe.getItem() == null || (gethand == null && otherhand == null)) continue;
-							if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
-								
-								if (pe.getName() == null || (gethand.getItemMeta().getDisplayName() != null && gethand.getItemMeta().getDisplayName().equals(pe.getName())) || (otherhand.getItemMeta().getDisplayName() != null && otherhand.getItemMeta().getDisplayName().equals(pe.getName()))) {
-									if (pe.getLore() == null || (gethand.getItemMeta().getLore() != null && gethand.getItemMeta().getLore().equals(pe.getLore())) || (otherhand.getItemMeta().getLore() != null && otherhand.getItemMeta().getLore().equals(pe.getLore()))) {
-										// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
-										if (pe.getParticle() == null) continue;
-										if (pe.getShape() == null) continue;
+							ItemStack[] armor = p.getInventory().getArmorContents();
+							
+							for(ItemStack armoritem : armor) {
+								if (armoritem != null) {
+									if (isSameItem(pe, armoritem, XMaterial.AIR.parseItem())) {
 										al.add(pe);
 									}
 								}
 							}
-			
+							
+							if (isSameItem(pe, gethand, otherhand)) {
+								al.add(pe);
+							}
+							
+							
+							
 					}
 				}
 			}
@@ -121,6 +125,22 @@ public class ItemParticles extends JavaPlugin {
 		if (al != null && al.size() > 0) return al;
 		}
 		return null;
+	}
+	
+	private static boolean isSameItem(ParticleEffect pe, ItemStack gethand, ItemStack otherhand) {
+		if (pe.getItem() == null || (gethand == null && otherhand == null)) return false;
+		if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
+			
+			if (pe.getName() == null || (gethand.getItemMeta().getDisplayName() != null && gethand.getItemMeta().getDisplayName().equals(pe.getName())) || (otherhand.getItemMeta().getDisplayName() != null && otherhand.getItemMeta().getDisplayName().equals(pe.getName()))) {
+				if (pe.getLore() == null || (gethand.getItemMeta().getLore() != null && gethand.getItemMeta().getLore().equals(pe.getLore())) || (otherhand.getItemMeta().getLore() != null && otherhand.getItemMeta().getLore().equals(pe.getLore()))) {
+					// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
+					if (pe.getParticle() == null) return false;
+					if (pe.getShape() == null) return false;
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	
