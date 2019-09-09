@@ -190,7 +190,6 @@ public class InventoryClickListener implements Listener {
 				if (e.getCurrentItem().getType() == XMaterial.FIREWORK_STAR.parseMaterial()) {choix="sphere";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.COMPASS.parseMaterial()) {choix="disk";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.LEAD.parseMaterial()) {choix="aura";getparticle.setShape(choix);}
-				if (e.getCurrentItem().getType() == XMaterial.NETHER_STAR.parseMaterial()) {choix="star";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.FEATHER.parseMaterial()) {
 					p.closeInventory();
 					e.setCancelled(true);
@@ -203,6 +202,16 @@ public class InventoryClickListener implements Listener {
 					p.openInventory(wingschoose);
 					return;
 				}
+				if (e.getCurrentItem().getType() == XMaterial.NETHER_STAR.parseMaterial()) {
+					p.closeInventory();
+					e.setCancelled(true);
+					Inventory starchoose = Bukkit.createInventory(null, 9, "§cChoose stars");
+					starchoose.setItem(0, ItemParticlesHandler.getItemStack("§cType 1", null, XMaterial.NETHER_STAR.parseMaterial()));
+					starchoose.setItem(1, ItemParticlesHandler.getItemStack("§cType 2", null, XMaterial.NETHER_STAR.parseMaterial()));
+					p.openInventory(starchoose);
+					return;
+				}
+				
 				p.sendMessage("§cThe shape has been set to §b" + choix);
 				
 				
@@ -219,6 +228,19 @@ public class InventoryClickListener implements Listener {
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 3")) {choix = "wings3"; getparticle.setShape("wings3");};
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 4")) {choix = "wings4"; getparticle.setShape("wings4");};
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 5")) {choix = "wings5"; getparticle.setShape("wings5");};
+				p.sendMessage("§cYou chose the type " + choix + " for your wings !");
+				p.closeInventory();
+				return;
+				
+			}
+		}
+		if (e.getView().getTitle().equals("§cChoose stars")) {
+			if (e.getCurrentItem() != null && e.getCurrentItem().getType() != XMaterial.AIR.parseMaterial()) {
+				ParticleEffect getparticle = currentparticleeffectgui.get(p);
+				e.setCancelled(true);
+				String choix = null;
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "star"; getparticle.setShape("star");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "star2"; getparticle.setShape("star2");};
 				p.sendMessage("§cYou chose the type " + choix + " for your wings !");
 				p.closeInventory();
 				return;

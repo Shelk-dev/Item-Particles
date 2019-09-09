@@ -85,6 +85,49 @@ public class OtherParticlesRunnable extends BukkitRunnable{
 							}
 							 
 						}
+					if (pe.getShape().equals("star2")) {
+						Location loc = p.getLocation();
+						int points = 3; //
+						for (int iteration = 0; iteration < points; iteration++) {
+						  double angle = 360.0 / points * iteration;
+						  double nextAngle = 360.0 / points * (iteration + 1);
+						  angle = Math.toRadians(angle);
+						  nextAngle = Math.toRadians(nextAngle);
+						  double x = Math.cos(angle) * 3;
+						  double z = Math.sin(angle) * 3;
+						  double x2 = Math.cos(nextAngle) * 3;
+						  double z2 = Math.sin(nextAngle) * 3;
+						  double deltaX = x2 - x;
+						  double deltaZ = z2 - z;
+						  double distance = 1.2;
+						  for (double d = 0; d < distance - .1; d += .1) {
+						    loc.add(x + deltaX * d, 0.1, z + deltaZ * d);
+						    MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
+						    loc.subtract(x + deltaX * d, 0.1, z + deltaZ * d);
+						  }
+						}
+						for (int iteration = 0; iteration < points; iteration++) {
+							  double angle = (360.0 / points * iteration) + 180;
+							  double nextAngle = (360.0 / points * (iteration + 1)) + 180;
+							  angle = Math.toRadians(angle);
+							  nextAngle = Math.toRadians(nextAngle);
+							  double x = Math.cos(angle) * 3;
+							  double z = Math.sin(angle) * 3;
+							  double x2 = Math.cos(nextAngle) * 3;
+							  double z2 = Math.sin(nextAngle) * 3;
+							  double deltaX = x2 - x;
+							  double deltaZ = z2 - z;
+							  double distance = 1.2;
+							  for (double d = 0; d < distance - .1; d += .1) {
+							    loc.add(x + deltaX * d, 0.1, z + deltaZ * d);
+							    MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
+							    loc.subtract(x + deltaX * d, 0.1, z + deltaZ * d);
+							  }
+							}
+						
+						
+						
+					}
 						
 					}
 				
