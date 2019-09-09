@@ -100,7 +100,7 @@ public class OtherParticlesRunnable extends BukkitRunnable{
 						  double deltaX = x2 - x;
 						  double deltaZ = z2 - z;
 						  double distance = 1.2;
-						  for (double d = 0; d < distance - .1; d += .1) {
+						  for (double d = 0; d < distance - .1; d += .05) {
 						    loc.add(x + deltaX * d, 0.1, z + deltaZ * d);
 						    MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
 						    loc.subtract(x + deltaX * d, 0.1, z + deltaZ * d);
@@ -118,7 +118,7 @@ public class OtherParticlesRunnable extends BukkitRunnable{
 							  double deltaX = x2 - x;
 							  double deltaZ = z2 - z;
 							  double distance = 1.2;
-							  for (double d = 0; d < distance - .1; d += .1) {
+							  for (double d = 0; d < distance - .1; d += .02) {
 							    loc.add(x + deltaX * d, 0.1, z + deltaZ * d);
 							    MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
 							    loc.subtract(x + deltaX * d, 0.1, z + deltaZ * d);
