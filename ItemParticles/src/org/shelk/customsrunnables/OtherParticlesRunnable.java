@@ -142,7 +142,7 @@ public class OtherParticlesRunnable extends BukkitRunnable{
 							  
 							  double distance = 1;
 							  
-							  for (double d = 0; d < distance - .1; d += .1) { // we subtract .1 from the distance because otherwise it would make 1 step too many.
+							  for (double d = 0; d < distance - .1; d += .05) {
 								  loc.add(x + deltaX * d, 0, z + deltaZ * d);
 								  MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
 								  loc.subtract(x + deltaX * d, 0, z + deltaZ * d);
