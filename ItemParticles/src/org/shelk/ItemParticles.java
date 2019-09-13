@@ -76,12 +76,10 @@ public class ItemParticles extends JavaPlugin {
 	public static ItemStack getHands(int choice, ParticleEffect pe, Player p) {
 		if (Bukkit.getVersion().contains("1.8") || Bukkit.getVersion().contains("1.7")) return p.getItemInHand();
 		ItemStack mainhand = p.getInventory().getItemInMainHand();
-		ItemStack secondhand = null;
+		ItemStack secondhand = p.getInventory().getItemInOffHand();
 		
 		if (pe.getHands() != null && pe.getHands().equals("lefthand")) mainhand = p.getInventory().getItemInOffHand();
-		if (pe.getHands() != null && pe.getHands().equals("both")) {
-			secondhand = p.getInventory().getItemInOffHand();
-		} else {
+		if (pe.getHands() == null || !pe.getHands().equals("both")) {
 			secondhand = mainhand.clone();
 		}
 		
@@ -130,7 +128,7 @@ public class ItemParticles extends JavaPlugin {
 	private static boolean isSameItem(ParticleEffect pe, ItemStack gethand, ItemStack otherhand) {
 		if (pe.getItem() == null || (gethand == null && otherhand == null)) return false;
 		if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
-			
+
 			if (pe.getName() == null || (gethand.getItemMeta().getDisplayName() != null && gethand.getItemMeta().getDisplayName().equals(pe.getName())) || (otherhand.getItemMeta().getDisplayName() != null && otherhand.getItemMeta().getDisplayName().equals(pe.getName()))) {
 				if (pe.getLore() == null || (gethand.getItemMeta().getLore() != null && gethand.getItemMeta().getLore().equals(pe.getLore())) || (otherhand.getItemMeta().getLore() != null && otherhand.getItemMeta().getLore().equals(pe.getLore()))) {
 					// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE

@@ -208,6 +208,7 @@ public class InventoryClickListener implements Listener {
 					Inventory starchoose = Bukkit.createInventory(null, 9, "§cChoose stars");
 					starchoose.setItem(0, ItemParticlesHandler.getItemStack("§cType 1", null, XMaterial.NETHER_STAR.parseMaterial()));
 					starchoose.setItem(1, ItemParticlesHandler.getItemStack("§cType 2", null, XMaterial.NETHER_STAR.parseMaterial()));
+					starchoose.setItem(2, ItemParticlesHandler.getItemStack("§cType 3", null, XMaterial.NETHER_STAR.parseMaterial()));
 					p.openInventory(starchoose);
 					return;
 				}
@@ -241,6 +242,7 @@ public class InventoryClickListener implements Listener {
 				String choix = null;
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 1")) {choix = "star"; getparticle.setShape("star");};
 				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 2")) {choix = "star2"; getparticle.setShape("star2");};
+				if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§cType 3")) {choix = "star3"; getparticle.setShape("star3");};
 				p.sendMessage("§cYou chose the type " + choix + " for your wings !");
 				p.closeInventory();
 				return;
