@@ -129,6 +129,7 @@ public class InventoryClickListener implements Listener {
 					newinv.setItem(5, ItemParticlesHandler.getItemStack("§aAura", null, XMaterial.LEAD.parseMaterial()));
 					newinv.setItem(6, ItemParticlesHandler.getItemStack("§bStar", null, XMaterial.NETHER_STAR.parseMaterial()));
 					newinv.setItem(7, ItemParticlesHandler.getItemStack("§2Wings", null, XMaterial.FEATHER.parseMaterial()));
+					newinv.setItem(8, ItemParticlesHandler.getItemStack("§fPulse", null, XMaterial.CLOCK.parseMaterial()));
 					
 					p.openInventory(newinv);
 					
@@ -190,6 +191,7 @@ public class InventoryClickListener implements Listener {
 				if (e.getCurrentItem().getType() == XMaterial.FIREWORK_STAR.parseMaterial()) {choix="sphere";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.COMPASS.parseMaterial()) {choix="disk";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.LEAD.parseMaterial()) {choix="aura";getparticle.setShape(choix);}
+				if (e.getCurrentItem().getType() == XMaterial.CLOCK.parseMaterial()) {choix="pulse";getparticle.setShape(choix);}
 				if (e.getCurrentItem().getType() == XMaterial.FEATHER.parseMaterial()) {
 					p.closeInventory();
 					e.setCancelled(true);
@@ -212,6 +214,7 @@ public class InventoryClickListener implements Listener {
 					p.openInventory(starchoose);
 					return;
 				}
+				
 				
 				p.sendMessage("§cThe shape has been set to §b" + choix);
 				

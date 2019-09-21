@@ -26,14 +26,13 @@ public class AuraRunnable extends BukkitRunnable {
 				float rgb2 = MathParticles.getRGB(2, pe);
 				float rgb3 = MathParticles.getRGB(3, pe);
 				
-				if (pe.getShape().equals("aura")) {
 					if (auracount.get(p) == null) auracount.put(p, 3);
 
 						MathParticles.playCircle(p, p.getLocation().add(0,((float)auracount.get(p) / 10),0), pe, 1, rgb1, rgb2, rgb3);
 						auracount.put(p, auracount.get(p) + 3);
 						if (auracount.get(p) == 18) auracount.put(p, 3);
 	   		
-		    }
+		    
 				}
 		}
 			}

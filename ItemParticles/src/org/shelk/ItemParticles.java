@@ -15,6 +15,7 @@ import org.shelk.bStats.MetricsLite;
 import org.shelk.commandhandler.ItemParticlesHandler;
 import org.shelk.customsrunnables.AuraRunnable;
 import org.shelk.customsrunnables.OtherParticlesRunnable;
+import org.shelk.customsrunnables.PulseRunnable;
 import org.shelk.customsrunnables.WingsRunnable;
 import org.shelk.listener.InventoryClickListener;
 import org.shelk.listener.ParticleMoveEvent;
@@ -50,12 +51,10 @@ public class ItemParticles extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new ParticleMoveEvent(), this);
 		
 		// Initializing runnables 
-		OtherParticlesRunnable opr = new OtherParticlesRunnable();
-		opr.runTaskTimer(this, 0L, 20L);
-		AuraRunnable ar = new AuraRunnable();
-		ar.runTaskTimer(this, 0L, 4L);
-		WingsRunnable wr = new WingsRunnable();
-		wr.runTaskTimer(this, 0L, 20L);
+		new OtherParticlesRunnable().runTaskTimer(this, 0L, 20L);
+		new AuraRunnable().runTaskTimer(this, 0L, 4L);
+		new PulseRunnable().runTaskTimer(this, 0L, 4L);
+		new WingsRunnable().runTaskTimer(this, 0L, 20L);
 		
 				}
 			
