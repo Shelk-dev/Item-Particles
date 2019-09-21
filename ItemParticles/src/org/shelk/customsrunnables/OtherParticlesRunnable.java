@@ -152,29 +152,6 @@ public class OtherParticlesRunnable extends BukkitRunnable{
 						
 					}
 					
-					if (pe.getShape().equals("star3")) {
-						Location loc = p.getLocation();
-						for (int iteration = 0; iteration < 8; iteration++) {
-							  double angle = 360.0 / 8 * iteration;
-							  angle = Math.toRadians(angle);
-							  
-							  double x = Math.cos(angle) * 2.7;
-							  double z = Math.sin(angle) * 2.7;
-							  
-							  double deltaX = 0 - x;
-							  double deltaZ = 0 - z;
-							  
-							  double distance = 1;
-							  
-							  for (double d = 0; d < distance - .1; d += .05) {
-								  loc.add(x + deltaX * d, 0, z + deltaZ * d);
-								  MathParticles.spawnParticle(p.getWorld(), pe, loc, rgb1, rgb2, rgb3, p);
-								  loc.subtract(x + deltaX * d, 0, z + deltaZ * d);
-								}
-							  
-							}
-						
-					}
 						
 					}
 				
