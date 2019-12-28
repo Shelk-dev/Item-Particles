@@ -172,6 +172,4 @@ public class ItemParticles extends JavaPlugin {
 		}
 		return compareItem.getItemMeta().getDisplayName().equals(particleEffect.getName());
 	}
-	
-	
 }
