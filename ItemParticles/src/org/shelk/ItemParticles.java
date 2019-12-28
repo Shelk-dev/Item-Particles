@@ -123,22 +123,53 @@ public class ItemParticles extends JavaPlugin {
 		}
 		return null;
 	}
-	
-	private static boolean isSameItem(ParticleEffect pe, ItemStack gethand, ItemStack otherhand) {
-		if (pe.getItem() == null || (gethand == null && otherhand == null)) return false;
-		if (pe.getItem() == null || gethand.getType() == pe.getItem() || otherhand.getType() == pe.getItem()) {
 
-			if (pe.getName() == null || (gethand.getItemMeta().getDisplayName() != null && gethand.getItemMeta().getDisplayName().equals(pe.getName())) || (otherhand.getItemMeta().getDisplayName() != null && otherhand.getItemMeta().getDisplayName().equals(pe.getName()))) {
-				if (pe.getLore() == null || (gethand.getItemMeta().getLore() != null && gethand.getItemMeta().getLore().equals(pe.getLore())) || (otherhand.getItemMeta().getLore() != null && otherhand.getItemMeta().getLore().equals(pe.getLore()))) {
-					// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
-					if (pe.getParticle() == null) return false;
-					if (pe.getShape() == null) return false;
-					return true;
-				}
-			}
+	private static boolean isSameItem(ParticleEffect pe, ItemStack gethand, ItemStack otherhand) {
+		if (pe.getItem() == null || (gethand == null && otherhand == null))  {
+			return false;
 		}
-		return false;
+		if (gethand.getType() != null && gethand.getType() != pe.getItem() && otherhand.getType() != pe.getItem()) {
+			return false;
+		}
+		if(pe.getName() != null && !isSameName(pe, gethand) && !isSameName(pe, otherhand)){
+			return false;
+		}
+		if(pe.getLore() != null  && !isSameLore(pe, gethand) && !isSameLore(pe, otherhand)) {
+			return false;
+		}
+		// THIS PLAYER HAS AN ITEM WITH A ITEM PARTICLE
+		if (pe.getParticle() == null) {
+			return false;
+		}
+		if (pe.getShape() == null) {
+			return false;
+		}
+		return true;
 	}
-	
-	
+
+	private static boolean isSameLore(ParticleEffect particleEffect, ItemStack compareItem) {
+		if(compareItem == null) {
+			return false;
+		}
+		if(!compareItem.hasItemMeta()) {
+			return false;
+		}
+		if(!compareItem.getItemMeta().hasLore()) {
+			return false;
+		}
+		return compareItem.getItemMeta().getLore().equals(particleEffect.getLore());
+	}
+
+	private static boolean isSameName(ParticleEffect particleEffect, ItemStack compareItem) {
+		if(compareItem == null) {
+			return false;
+		}
+		if(!compareItem.hasItemMeta()) {
+			return false;
+		}
+		if(!compareItem.getItemMeta().hasDisplayName()) {
+			return false;
+		}
+		return compareItem.getItemMeta().getDisplayName().equals(particleEffect.getName());
+	}
 }
